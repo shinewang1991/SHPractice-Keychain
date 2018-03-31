@@ -13,6 +13,8 @@
 		14B125A2206F5E86008013E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B125A1206F5E86008013E0 /* Assets.xcassets */; };
 		14B125A5206F5E86008013E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14B125A3206F5E86008013E0 /* LaunchScreen.storyboard */; };
 		14B125A8206F5E86008013E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B125A7206F5E86008013E0 /* main.m */; };
+		14B125B3206F5FAD008013E0 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B125AF206F5FAD008013E0 /* SAMKeychainQuery.m */; };
+		14B125B4206F5FAD008013E0 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B125B2206F5FAD008013E0 /* SAMKeychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,11 @@
 		14B125A4206F5E86008013E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14B125A6206F5E86008013E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14B125A7206F5E86008013E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14B125AF206F5FAD008013E0 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychainQuery.m; sourceTree = "<group>"; };
+		14B125B0206F5FAD008013E0 /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
+		14B125B1206F5FAD008013E0 /* SAMKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychainQuery.h; sourceTree = "<group>"; };
+		14B125B2206F5FAD008013E0 /* SAMKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychain.m; sourceTree = "<group>"; };
+		14B125D8206F6AEE008013E0 /* SHPractice-Keychain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SHPractice-Keychain.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,8 @@
 		14B12597206F5E86008013E0 /* SHPractice-Keychain */ = {
 			isa = PBXGroup;
 			children = (
+				14B125D8206F6AEE008013E0 /* SHPractice-Keychain.entitlements */,
+				14B125AE206F5FAD008013E0 /* SAMKeychain */,
 				14B12598206F5E86008013E0 /* AppDelegate.h */,
 				14B12599206F5E86008013E0 /* AppDelegate.m */,
 				14B1259B206F5E86008013E0 /* ViewController.h */,
@@ -69,6 +78,17 @@
 				14B125A7206F5E86008013E0 /* main.m */,
 			);
 			path = "SHPractice-Keychain";
+			sourceTree = "<group>";
+		};
+		14B125AE206F5FAD008013E0 /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				14B125AF206F5FAD008013E0 /* SAMKeychainQuery.m */,
+				14B125B0206F5FAD008013E0 /* SAMKeychain.h */,
+				14B125B1206F5FAD008013E0 /* SAMKeychainQuery.h */,
+				14B125B2206F5FAD008013E0 /* SAMKeychain.m */,
+			);
+			path = SAMKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,6 +123,11 @@
 					14B12594206F5E86008013E0 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -142,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B125B3206F5FAD008013E0 /* SAMKeychainQuery.m in Sources */,
 				14B1259D206F5E86008013E0 /* ViewController.m in Sources */,
+				14B125B4206F5FAD008013E0 /* SAMKeychain.m in Sources */,
 				14B125A8206F5E86008013E0 /* main.m in Sources */,
 				14B1259A206F5E86008013E0 /* AppDelegate.m in Sources */,
 			);
@@ -278,6 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SHPractice-Keychain/SHPractice-Keychain.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSE3H6NFMJ;
 				INFOPLIST_FILE = "SHPractice-Keychain/Info.plist";
@@ -292,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SHPractice-Keychain/SHPractice-Keychain.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSE3H6NFMJ;
 				INFOPLIST_FILE = "SHPractice-Keychain/Info.plist";

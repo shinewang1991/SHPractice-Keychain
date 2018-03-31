@@ -7,23 +7,37 @@
 //
 
 #import "ViewController.h"
+#import "SAMKeychain.h"
+#define kUserNameKey @"kUserNameKey"
+#define kServiceKey @"Shine"
 
 @interface ViewController ()
-
+@property (nonatomic, weak) IBOutlet UITextField *userNameTextField;
+@property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:kUserNameKey];
+    self.userNameTextField.text = userName;
+    
+    [self getPwd:userName];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getPwd:(NSString *)userName{
+    NSLog(@"所有账号:%@",[SAMKeychain allAccounts]);
+    NSString *passWord = [SAMKeychain passwordForService:kServiceKey account:userName];
+    self.passwordTextField.text = passWord;
 }
 
+- (IBAction)loginBtnClicked:(id)sender{
+    NSString *userName = self.userNameTextField.text;
+    NSString *passWord = self.passwordTextField.text;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:kUserNameKey];
+    [SAMKeychain setPassword:passWord forService:kServiceKey account:userName];
+}
 
 @end
